@@ -48,7 +48,7 @@ if [ $CHROME = true ]; then
 	echo "***** Installed chrome and chromedriver *****"
 fi
 
-if [ $PHANJS = true || $FIREFOX = true || $CHROME = true ]; then
+if [[ $PHANJS = true || $FIREFOX = true || $CHROME = true ]]; then
 	# selenium
 	echo "***** Starting install selenium *****"
 	pip install selenium
@@ -57,13 +57,16 @@ fi
 
 if [[ $FIREFOX = true || $CHROME = true ]]; then
 	# firefox and chrome depedent display
+	echo "***** Starting install pydisplay *****"
 	apt-get -y install xvfb
 	pip install pyvirtualdisplay
+	echo "***** Installed pydisplay *****"
 fi
 
 if [ $SCRAPY = true ]; then
 	# scrapy
 	echo "***** Starting install Scrapy *****"
+	apt-get install -y build-essential libssl-dev libffi-dev
 	pip install Scrapy
 	echo "***** Installed Scrapy *****"
 fi
